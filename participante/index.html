@@ -1642,9 +1642,18 @@ function menuPos(btn,i){
    A1 · drawer "Adicionar posição" — distribuição precisa fechar 100%
    ============================================================ */
 let drawerAberto=false;
-function abrirDrawer(html){
+function abrirDrawer(html,repintando){
   const d=$('#drawer'); d.innerHTML=html; d.classList.add('on'); $('#scrim').classList.add('on');
-  drawerAberto=true; bindRipples(d); trapFocus(d);
+  drawerAberto=true; bindRipples(d);
+  /* num repaint o drawer já está aberto: refocar o primeiro elemento jogaria
+     o scroll do corpo de volta para o topo a cada escolha de droplist */
+  if(!repintando) trapFocus(d);
+}
+/* toda mudança de droplist do drawer passa por aqui, guardando quem disparou
+   para devolver o foco ao mesmo campo depois de redesenhar */
+function repintarPosicao(idFoco){
+  if(state.drawer) state.drawer.foco=idFoco||null;
+  pintarPosicao();
 }
 function fecharDrawer(){
   const d=$('#drawer'); if(!d.classList.contains('on')) return;
@@ -1672,6 +1681,9 @@ function posicaoValida(){
     d.dist.every(x=>x.tribo&&x.squad&&x.cc&&x.capex&&pctNum(x.pct)>0));
 }
 function pintarPosicao(){
+  const corpoAnt=document.querySelector('#drawer .body');
+  const repintando=drawerAberto && !!corpoAnt;
+  const scrollAnt=corpoAnt?corpoAnt.scrollTop:0;
   const d=state.drawer, soma=somaPct(), ok=soma===100;
   const vh = RATE[d.cargo]||0;
   const blocos = d.dist.map((x,i)=>`
@@ -1710,43 +1722,57 @@ function pintarPosicao(){
     </div>
     <footer>
       <button class="btn btn-text" onclick="fecharDrawer()">Cancelar</button>
-      <button class="btn btn-filled" onclick="salvarPosicao()">Adicionar posição</button></footer>`);
+      <button class="btn btn-filled" onclick="salvarPosicao()">Adicionar posição</button></footer>`,
+    repintando);
 
   const D=state.drawer;
   $('#sl_contrato').innerHTML=dlInit('contrato',{opcoes:CONTRATOS,sel:[D.contrato],label:'Tipo de contrato',
     placeholder:'Selecione',onChange:v=>{D.contrato=v[0]||'';}});
   $('#sl_cargo').innerHTML=dlInit('cargo',{opcoes:CARGOS,sel:D.cargo?[D.cargo]:[],label:'Cargo e senioridade *',
-    placeholder:'Selecione o cargo',onChange:v=>{D.cargo=v[0]||'';pintarPosicao();},
+    placeholder:'Selecione o cargo',onChange:v=>{D.cargo=v[0]||'';repintarPosicao('cargo');},
     dica:'O cargo define o Rate Card — o valor/hora que a consultoria pode cobrar.'});
   $('#sl_cons').innerHTML=dlInit('cons',{opcoes:CONSULTORIAS,sel:D.cons?[D.cons]:[],label:'Consultoria *',
-    placeholder:'Selecione a consultoria',onChange:v=>{D.cons=v[0]||'';pintarPosicao();}});
+    placeholder:'Selecione a consultoria',onChange:v=>{D.cons=v[0]||'';repintarPosicao('cons');}});
   $('#sl_horas').innerHTML=dlInit('horas',{opcoes:HORAS,sel:[D.horas],label:'Quantidade de horas',
-    placeholder:'Selecione',onChange:v=>{D.horas=v[0]||'';pintarPosicao();}});
+    placeholder:'Selecione',onChange:v=>{D.horas=v[0]||'';repintarPosicao('horas');}});
   $('#sl_periodo').innerHTML=dlInit('periodo',{opcoes:PERIODOS,sel:[D.periodo],label:'Período',
     placeholder:'Selecione',onChange:v=>{D.periodo=v[0]||'';}});
   D.dist.forEach((x,i)=>{
     $('#sl_tribo'+i).innerHTML=dlInit('tribo'+i,{opcoes:TRIBOS,sel:x.tribo?[x.tribo]:[],label:'Tribo *',
-      placeholder:'Selecione',onChange:v=>{x.tribo=v[0]||'';x.squad='';pintarPosicao();}});
+      placeholder:'Selecione',onChange:v=>{x.tribo=v[0]||'';x.squad='';repintarPosicao('tribo'+i);}});
     $('#sl_squad'+i).innerHTML=dlInit('squad'+i,{opcoes:SQUADS[x.tribo]||[],sel:x.squad?[x.squad]:[],
       label:'Squad *',placeholder:x.tribo?'Selecione':'Escolha a tribo antes',
-      onChange:v=>{x.squad=v[0]||'';pintarPosicao();}});
+      onChange:v=>{x.squad=v[0]||'';repintarPosicao('squad'+i);}});
     $('#sl_cc'+i).innerHTML=dlInit('cc'+i,{opcoes:CENTROS,sel:x.cc?[x.cc]:[],label:'Centro de custo *',
-      placeholder:'Selecione',onChange:v=>{x.cc=v[0]||'';pintarPosicao();}});
+      placeholder:'Selecione',onChange:v=>{x.cc=v[0]||'';repintarPosicao('cc'+i);}});
     $('#sl_capex'+i).innerHTML=dlInit('capex'+i,{opcoes:CAPEX,sel:x.capex?[x.capex]:[],label:'Projeto Capex *',
-      placeholder:'Selecione',onChange:v=>{x.capex=v[0]||'';pintarPosicao();}});
+      placeholder:'Selecione',onChange:v=>{x.capex=v[0]||'';repintarPosicao('capex'+i);}});
     $('#sl_pct'+i).innerHTML=dlInit('pct'+i,{opcoes:PCTS,sel:[x.pct],label:'% da alocação *',
-      placeholder:'Selecione',onChange:v=>{x.pct=v[0]||'0%';pintarPosicao();}});
+      placeholder:'Selecione',onChange:v=>{x.pct=v[0]||'0%';repintarPosicao('pct'+i);}});
   });
+
+  if(repintando){
+    const corpo=document.querySelector('#drawer .body');
+    if(corpo) corpo.scrollTop=scrollAnt;
+    const alvo=D.foco && document.querySelector('#dl_'+D.foco+' > .trigger');
+    if(alvo) alvo.focus({preventScroll:true});
+    D.foco=null;
+  }
 }
 function adicionarDist(){
   const d=state.drawer, falta=Math.max(0,100-somaPct());
   const nova=novaDist(); nova.pct=(PCTS.includes(falta+'%')?falta+'%':'50%');
   d.dist.push(nova); pintarPosicao();
+  const novoBloco=document.querySelector('#sl_tribo'+(d.dist.length-1));
+  if(novoBloco) novoBloco.scrollIntoView({block:'center',behavior:'smooth'});
 }
 function removerDist(i){ state.drawer.dist.splice(i,1); pintarPosicao(); }
 function salvarPosicao(){
   const d=state.drawer;
   if(!posicaoValida()){ d.erro=true; pintarPosicao();
+    /* aqui o scroll precisa subir: o aviso que explica o bloqueio fica no topo */
+    const aviso=document.querySelector('#drawer .banner.b-warn');
+    if(aviso) aviso.scrollIntoView({block:'center',behavior:'smooth'});
     toast(somaPct()!==100 ? 'A distribuição precisa somar 100% para a posição ser criada.'
                           : 'Preencha os campos obrigatórios da posição.',{kind:'bad'});
     return; }
