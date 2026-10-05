@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GFA · Gestão Financeira de Alocações</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1309,29 +1308,29 @@ function seed(){
      pos:6, vinc:6, ini:'01/09/2026', fim:'28/02/2027', valor:189420, st:'ativa'},
     {id:'AL-402', squad:'Antifraude',       trilha:'squad',    cons:'CI&T',    pedido:'PN1047590',
      pos:7, vinc:4, ini:'01/09/2026', fim:'31/03/2027', valor:168400, st:'avincular'},
-    {id:'AL-403', squad:'Open Finance',     trilha:'posicoes', cons:'OPAH',    pedido:'PN1047588',
-     pos:3, vinc:1, ini:'15/09/2026', fim:'14/03/2027', valor:100000, st:'avincular'},
+    {id:'AL-403', squad:'Onboarding Digital',trilha:'posicoes',cons:'OPAH',    pedido:'PN1047588',
+     pos:3, vinc:1, ini:'01/09/2026', fim:'28/02/2027', valor:100000, st:'avincular'},
     {id:'AL-404', squad:'Cartão Digital',   trilha:'posicoes', cons:'VERITY',  pedido:'—',
      pos:2, vinc:0, ini:'01/10/2026', fim:'31/03/2027', valor:96160,  st:'contratacao'},
     {id:'AL-405', squad:'Pix Empresas',     trilha:'squad',    cons:'MTTECHNE',pedido:'—',
      pos:5, vinc:0, ini:'01/10/2026', fim:'31/03/2027', valor:92000,  st:'contratacao'},
     {id:'AL-406', squad:'Crédito',          trilha:'posicoes', cons:'LEEGA',   pedido:'—',
      pos:4, vinc:0, ini:'01/11/2026', fim:'30/04/2027', valor:121800, st:'aguardando'},
-    {id:'AL-407', squad:'Onboarding Digital',trilha:'posicoes',cons:'OPAH',    pedido:'—',
-     pos:4, vinc:0, ini:'01/10/2026', fim:'31/03/2027', valor:245600, st:'proposta', prop:'PC-0367'}
+    {id:'AL-407', squad:'Open Finance',     trilha:'posicoes', cons:'OPAH',    pedido:'—',
+     pos:2, vinc:0, ini:'15/09/2026', fim:'14/03/2027', valor:410784, st:'proposta', prop:'PC-0367'}
   ];
   state.props = [
-    {id:'PC-0367', demanda:'Onboarding Digital', al:'AL-407', cons:'OPAH', posicoes:10, st:'nova',
-     enviada:'15/09', respondida:'17/09', tolerancia:3,
+    {id:'PC-0367', demanda:'Open Finance', al:'AL-407', cons:'OPAH', posicoes:2, st:'nova',
+     enviada:'14/08', respondida:'18/08', periodo:'15/09/2026 – 14/03/2027 · 6 meses',
      itens:[
-       {cargo:'Desenvolvedor Sênior', base:'R$ 165,00/h → R$ 171,67/h', cc:'CC 20492 · Open Finance · Capex 690',
-        tribo:'Canais Digitais / Open Finance', qtd:4, sol:285120, cot:296640},
-       {cargo:'Desenvolvedor Pleno', base:'R$ 144,00/h → R$ 144,00/h', cc:'CC 20492 · Open Finance · Capex 690',
-        tribo:'Canais Digitais / Open Finance 60% · Pagamentos / Pix 40%', qtd:3, sol:186624, cot:186624},
-       {cargo:'QA Pleno', base:'R$ 144,00/h → R$ 150,67/h', cc:'CC 20488 · Dados & Analytics · Capex 588',
-        tribo:'Dados & Analytics / Plataforma de Dados', qtd:2, sol:124416, cot:130176},
-       {cargo:'Tech Lead', base:'R$ 213,00/h → R$ 224,17/h', cc:'CC 20492 · Open Finance · Capex 690',
-        tribo:'Canais Digitais / Open Finance', qtd:1, sol:122688, cot:129120}
+       {cargo:'Desenvolvedor Front-End Especialista', cargoCot:'Desenvolvedor Front-End Pleno',
+        base:'R$ 231,00/h solicitado · R$ 168,00/h cotado', horas:1056,
+        cc:'CC 20492 · Open Finance · Capex 690 (50%) + CC 20488 · Dados & Analytics · Capex 588 (50%)',
+        tribo:'Canais Digitais / Open Finance', qtd:1, sol:243936, cot:177408},
+       {cargo:'Analista de Dados Pleno', cargoCot:'Analista de Dados Pleno',
+        base:'R$ 158,00/h solicitado · R$ 158,00/h cotado', horas:1056,
+        cc:'CC 20492 · Open Finance · Capex 690',
+        tribo:'Canais Digitais / Open Finance', qtd:1, sol:166848, cot:166848}
      ]},
     {id:'PC-0366', demanda:'Antifraude',     cons:'CI&T',    posicoes:7, st:'concluida',
      oc:'OC PR01234747 · Pedido PN1047590', valorFixo:1010400},
@@ -1356,15 +1355,15 @@ function seed(){
     {id:'PN1047538·Jul', squad:'Crédito', cons:'LEEGA', pedido:'PN1047538', comp:'Julho/2026',
      ini:'01/07', fim:'31/07', stage:'aprovar',
      colabs:[{nome:'Bruno Tavares', cargo:'Engenheiro de Dados Pleno', vh:122.6, prev:152, apo:152}],
-     nf:{numero:'000123401', serie:'1', valor:18635.20, emissao:'08/08/2026', venc:'07/09/2026',
-         comprovante:'12/08/2026', arquivo:'NF_000123401.pdf · 201 KB'},
+     nf:{numero:'000123401', serie:'1', valor:19616.00, horas:160, emissao:'08/08/2026',
+         venc:'07/09/2026', arquivo:'NF_000123401.pdf · 201 KB'},
      hist:[{t:'Nota fiscal enviada', m:'08/08 · LEEGA'},{t:'Horas aprovadas', m:'05/08 · Gestor'},
            {t:'Período aberto', m:'01/07 · Sistema'}]},
     {id:'PN1047455·Jul', squad:'Pix Empresas', cons:'MTTECHNE', pedido:'PN1047455', comp:'Julho/2026',
      ini:'01/07', fim:'31/07', stage:'concluido',
      colabs:[{nome:'Henrique Sales', cargo:'Tech Lead Pleno', vh:245, prev:152, apo:152}],
-     nf:{numero:'000445566', serie:'1', valor:37240, emissao:'07/08/2026', venc:'06/09/2026',
-         comprovante:'07/08/2026', arquivo:'NF_000445566.pdf · 212 KB'},
+     nf:{numero:'000445566', serie:'1', valor:37240, horas:152, emissao:'07/08/2026',
+         venc:'06/09/2026', arquivo:'NF_000445566.pdf · 212 KB'},
      hist:[{t:'Faturamento aprovado', m:'11/08 · Gustavo Rocha'},
            {t:'Nota fiscal enviada', m:'07/08 · MTTECHNE'},{t:'Período aberto', m:'01/07 · Sistema'}]},
     {id:'PN1047541·Jul', squad:'Aquisição Cartão', cons:'GFT', pedido:'PN1047541', comp:'Julho/2026',
@@ -1373,8 +1372,8 @@ function seed(){
     {id:'PN1047522·Jul', squad:'Cartão Digital', cons:'VERITY', pedido:'PN1047522', comp:'Julho/2026',
      ini:'01/07', fim:'31/07', stage:'correcao',
      colabs:[{nome:'Letícia Marques', cargo:'Product Designer Sênior', vh:148.57, prev:168, apo:168}],
-     nf:{numero:'000123456', serie:'1', valor:24959.76, emissao:'10/08/2026', venc:'09/09/2026',
-         comprovante:'10/08/2026', arquivo:'NF_000123456.pdf · 248 KB'},
+     nf:{numero:'000123456', serie:'1', valor:24959.76, horas:168, emissao:'10/08/2026',
+         venc:'09/09/2026', arquivo:'NF_000123456.pdf · 248 KB'},
      motivo:{texto:'A razão social do tomador está escrita de forma diferente da do contrato.',
              autor:'Gustavo Rocha', quando:'11/08/2026', tipo:'carta'}, hist:[]},
     {id:'PN1047602·Ago', squad:'Antifraude', cons:'CI&T', pedido:'PN1047602', comp:'Agosto/2026',
@@ -1383,8 +1382,8 @@ function seed(){
     {id:'PN1047510·Jun', squad:'Aquisição Cartão', cons:'GFT', pedido:'PN1047510', comp:'Junho/2026',
      ini:'01/06', fim:'30/06', stage:'concluido',
      colabs:[{nome:'Tiago Linhares Souza', cargo:'Desenvolvedor Front-End Especialista', vh:231, prev:160, apo:160}],
-     nf:{numero:'000771234', serie:'1', valor:36960, emissao:'05/07/2026', venc:'04/08/2026',
-         comprovante:'05/07/2026', arquivo:'NF_000771234.pdf · 177 KB'}, hist:[]}
+     nf:{numero:'000771234', serie:'1', valor:36960, horas:160, emissao:'05/07/2026',
+         venc:'04/08/2026', arquivo:'NF_000771234.pdf · 177 KB'}, hist:[]}
   ];
 }
 
@@ -1909,47 +1908,60 @@ function telaProp(){
   const p=PR(state.id); if(!p||!p.itens){ nav('gestor'); return; }
   const sol=p.itens.reduce((s,i)=>s+i.sol,0), cot=p.itens.reduce((s,i)=>s+i.cot,0);
   const dif=cot-sol, pct=(dif/sol*100);
-  const acima=pct>p.tolerancia;
+  const divs=p.itens.filter(i=>i.cargoCot && i.cargoCot!==i.cargo);
   const linhas=p.itens.map(i=>{
-    const d=i.cot-i.sol;
+    const d=i.cot-i.sol, dv=i.cargoCot && i.cargoCot!==i.cargo;
     return `<tr>
       <td><div class="strong">${esc(i.cargo)}</div>
+        ${dv
+          ? `<div class="sub" style="color:var(--danger-03);font-weight:600">cotado como ${esc(i.cargoCot)}
+              — cargo diferente do solicitado</div>`
+          : `<div class="sub">cotado como ${esc(i.cargoCot||i.cargo)} — igual ao solicitado</div>`}
         <div class="sub">${esc(i.base)}</div>
         <div class="sub">${esc(i.cc)}</div>
         <div class="sub">${esc(i.tribo)}</div></td>
       <td class="num">${i.qtd}</td>
       <td class="num">${BRL(i.sol)}</td>
       <td class="num">${BRL(i.cot)}</td>
-      <td class="num">${d? `<b style="color:var(--danger-03)">+ ${BRL(d)}</b>` : '<span class="muted">sem diferença</span>'}</td>
+      <td class="num">${d? `<b style="white-space:nowrap${dv?';color:var(--danger-03)':''}">${d>0?'+ ':'− '}${BRL(Math.abs(d))}</b>`
+                        : '<span class="muted" style="white-space:nowrap">sem diferença</span>'}</td>
     </tr>`;}).join('');
 
   $('#content').innerHTML = `
     ${voltarPara('gestor','Propostas')}
     ${head(`Proposta ${esc(p.id)} · ${esc(p.demanda)}`,
-      `Enviada em ${p.enviada} · ${esc(p.cons)} respondeu em ${p.respondida} · confira o cotado contra o solicitado antes de aceitar`,
+      `Resposta à solicitação que você enviou em ${p.enviada} · ${esc(p.cons)} respondeu em ${p.respondida} ·
+       confira o cotado contra o solicitado antes de aceitar`,
       pill(STP,p.st))}
     ${passos(['Solicitação enviada','Proposta recebida','OC e pedido · Governança','Análise jurídica','Proposta concluída'],1)}
+    ${divs.length?`<div class="banner b-alert"><div>
+      <b>${divs.length===1?'Uma posição voltou com cargo diferente do solicitado':
+        divs.length+' posições voltaram com cargo diferente do solicitado'}</b>
+      ${divs.map(i=>`Você pediu ${esc(i.cargo)} e a ${esc(p.cons)} cotou ${esc(i.cargoCot)}.`).join(' ')}
+      O valor/hora segue o rate card do cargo cotado — por isso o total ficou
+      ${dif<0?BRL(Math.abs(dif))+' abaixo':BRL(dif)+' acima'} do estimado.</div></div>`:''}
     <div class="cols">
       <div>
         <div class="card">
           <div style="padding:16px 20px;border-bottom:1px solid var(--light-03)">
             <b style="font-size:16px">Solicitado × cotado</b>
-            <div class="sub">${esc(p.cons)} respondeu em ${p.respondida} · ${p.posicoes} posições em 2 centros de custo ·
-              no aceite nascem 2 pedidos de compra</div></div>
+            <div class="sub">${esc(p.cons)} respondeu em ${p.respondida} · ${p.posicoes} posições ·
+              ${esc(p.periodo||'')} · no aceite nascem 2 pedidos de compra</div></div>
           <table class="tbl">
-            <thead><tr><th>Cargo · centro de custo · Capex</th><th class="num">Posições</th>
+            <thead><tr><th>Posição solicitada · cargo cotado · centro de custo</th>
+              <th class="num">Posições</th>
               <th class="num">Solicitado</th><th class="num">Cotado</th><th class="num">Diferença</th></tr></thead>
             <tbody>${linhas}
               <tr><td><b>Total da proposta</b></td><td class="num"><b>${p.posicoes}</b></td>
                 <td class="num"><b>${BRL(sol)}</b></td><td class="num"><b>${BRL(cot)}</b></td>
-                <td class="num"><b style="color:var(--danger-03)">+ ${BRL(dif)}</b></td></tr>
+                <td class="num"><b style="white-space:nowrap">${dif>0?'+ ':'− '}${BRL(Math.abs(dif))}</b></td></tr>
             </tbody></table></div>
         <div class="card pad" style="margin-top:16px">
           <span class="kicker">Documentos enviados pela consultoria</span>
           <div class="histbar" style="margin-top:10px">
             <span class="ico">${icon(I.file,18)}</span>
             <div class="tx"><b>proposta-comercial-${p.id.toLowerCase()}.pdf</b>
-              <span>1,2 MB · enviado em 17/09/2026 às 14:02</span></div>
+              <span>1,2 MB · enviado em ${esc(p.respondida)}/2026 às 14:02</span></div>
             <button class="btn btn-text btn-xs" onclick="foraDoEscopo('Baixar o anexo')">Baixar</button></div>
         </div>
       </div>
@@ -1957,13 +1969,14 @@ function telaProp(){
         <div class="card pad">
           <span class="kicker">Valor cotado pela consultoria</span>
           <div style="font-size:28px;font-weight:700;margin:6px 0 2px">${BRL(cot)}</div>
-          <div class="sub" style="color:var(--danger-03)">+ ${BRL(dif)} (+${pct.toFixed(1).replace('.',',')}%)
+          <div class="sub">${dif>0?'+ ':'− '}${BRL(Math.abs(dif))}
+            (${dif>0?'+':'−'}${Math.abs(pct).toFixed(1).replace('.',',')}%)
             sobre o valor estimado de ${BRL(sol)}</div>
         </div>
-        ${acima?`<div class="banner b-alert" style="margin-top:16px"><div>
-          <b>Divergência acima da tolerância</b>
-          A tolerância configurada é de ${p.tolerancia}%. Como a diferença é de ${pct.toFixed(1).replace('.',',')}%,
-          aceitar esta proposta exige justificativa registrada no histórico.</div></div>`:''}
+        ${divs.length?`<div class="banner b-alert" style="margin-top:16px"><div>
+          <b>Aceitar exige justificativa</b>
+          A proposta não responde exatamente ao que foi pedido. Aceitar assim registra no histórico
+          que você assumiu a troca de cargo; devolver reabre a proposta com a ${esc(p.cons)}.</div></div>`:''}
         <div class="card pad" style="margin-top:16px">
           <span class="kicker">O que acontece depois</span>
           <ol class="lista-passos">
@@ -1984,16 +1997,20 @@ function telaProp(){
 function dlgAceitarProposta(){
   const p=PR(state.id);
   const sol=p.itens.reduce((s,i)=>s+i.sol,0), cot=p.itens.reduce((s,i)=>s+i.cot,0);
-  const pct=((cot-sol)/sol*100).toFixed(1).replace('.',',');
-  openDialog(`<h2 id="dlgTitle">Aceitar com divergência de ${pct}%?</h2>
+  const dif=cot-sol;
+  const divs=p.itens.filter(i=>i.cargoCot && i.cargoCot!==i.cargo);
+  openDialog(`<h2 id="dlgTitle">${divs.length?'Aceitar com cargo diferente do solicitado?'
+    :'Aceitar a proposta?'}</h2>
     <div class="body">
-      <p class="muted" style="margin:0">A proposta fica registrada com o valor cotado e segue para a governança
-        registrar a ordem de compra. A justificativa vai para o histórico e é lida por quem aprova a OC.</p>
+      <p class="muted" style="margin:0">A proposta fica registrada com o que a consultoria cotou e segue para a
+        governança registrar a ordem de compra. A justificativa vai para o histórico e é lida por quem aprova a OC.</p>
+      ${divs.map(i=>`<div class="banner b-alert"><div><b>${esc(i.cargo)} → ${esc(i.cargoCot)}</b>
+        A posição entra na alocação com o cargo cotado, não com o que você pediu.</div></div>`).join('')}
       <div class="banner b-neutral"><div><b>${esc(p.cons)} · ${BRL(cot)}</b>
-        ${BRL(cot-sol)} acima do estimado · ${p.posicoes} posições · 2 pedidos de compra</div></div>
+        ${BRL(Math.abs(dif))} ${dif>0?'acima':'abaixo'} do estimado · ${p.posicoes} posições · 2 pedidos de compra</div></div>
       <label class="field" id="fJust"><textarea id="txJust"
-        placeholder="Por que vale aceitar acima do estimado — quem aprova a OC lê esta justificativa"></textarea>
-        <label>Justificativa da divergência *</label></label>
+        placeholder="Por que vale aceitar a proposta como ela voltou — quem aprova a OC lê esta justificativa"></textarea>
+        <label>Justificativa *</label></label>
     </div>
     <div class="acts"><button class="btn btn-text" onclick="closeDialog()">Cancelar</button>
       <button class="btn btn-filled" onclick="confirmarAceite()">Aceitar e enviar à governança</button></div>`);
@@ -2001,9 +2018,9 @@ function dlgAceitarProposta(){
 function confirmarAceite(){
   const tx=$('#txJust').value.trim();
   if(!tx){ $('#fJust').classList.add('err'); $('#txJust').focus();
-    toast('Escreva a justificativa da divergência para continuar.',{kind:'bad'}); return; }
+    toast('Escreva a justificativa para continuar.',{kind:'bad'}); return; }
   const p=PR(state.id); closeDialog();
-  p.st='emcompras'; p.oc='OC solicitada em 17/09';
+  p.st='emcompras'; p.oc='OC solicitada em '+p.respondida;
   const al=state.alocs.find(a=>a.id===p.al); if(al){ al.st='contratacao'; al.prop=null; }
   concluir('A2','aceitou com justificativa');
   nav('gestor');
@@ -2181,6 +2198,7 @@ function confirmarDevolverHoras(){
 function telaNF(){
   const p=PE(state.id); if(!p||!p.nf){ nav('fat'); return; }
   const n=p.nf;
+  const difNF = Math.round((n.valor - vApo(p))*100)/100;
   const linha=(l,v,alerta)=>`<div class="kv"><span>${l}</span>
     <b${alerta?' style="color:var(--danger-03)"':''}>${v}</b></div>`;
   $('#content').innerHTML = `
@@ -2188,19 +2206,24 @@ function telaNF(){
     ${head(`${esc(p.squad)} · ${esc(p.comp)}`,
       `${esc(p.cons)} · Pedido ${esc(p.pedido)} · nota fiscal recebida em ${esc(n.emissao)}`, pill(STF,p.stage))}
     ${passos(['Período aberto','Horas apontadas','Revisão de horas','Nota fiscal','Aprovação da NF','Concluído'],4)}
+    ${difNF!==0?`<div class="banner b-alert"><div>
+      <b>O valor da nota não bate com o faturamento aprovado</b>
+      A nota foi emitida em ${BRL(n.valor)}${n.horas!==hApo(p)?` sobre ${NUM(n.horas)} h`:''} e o aprovado
+      em ${esc(p.comp)} foi ${BRL(vApo(p))}${n.horas!==hApo(p)?` sobre ${NUM(hApo(p))} h`:''} —
+      ${BRL(Math.abs(difNF))} ${difNF>0?'a mais':'a menos'}. Aprovar libera o pagamento pelo valor da nota.</div></div>`:''}
     <div class="cols">
       <div>
         <div class="card">
           <div style="padding:16px 20px;border-bottom:1px solid var(--light-03)">
             <b style="font-size:16px">Dados da nota fiscal</b>
-            <div class="sub">Confira contra o comprovante enviado junto antes de aprovar o pagamento.</div></div>
+            <div class="sub">Confira o valor da nota contra as horas aprovadas antes de liberar o pagamento.</div></div>
           <div style="padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:12px 24px">
             ${linha('Número da nota', esc(n.numero))}
             ${linha('Série', esc(n.serie))}
             ${linha('Data de emissão', esc(n.emissao))}
-            ${linha('Data do comprovante', esc(n.comprovante))}
             ${linha('Vencimento', esc(n.venc))}
-            ${linha('Valor da nota', BRL(n.valor))}
+            ${linha('Horas faturadas na nota', NUM(n.horas)+' h', n.horas!==hApo(p))}
+            ${linha('Valor da nota', BRL(n.valor), difNF!==0)}
           </div>
           <div style="padding:0 20px 18px">
             <div class="histbar"><span class="ico">${icon(I.file,18)}</span>
@@ -2224,16 +2247,18 @@ function telaNF(){
       <div>
         <div class="card pad">
           <span class="kicker">Valor a pagar</span>
-          <div style="font-size:28px;font-weight:700;margin:6px 0 2px">${BRL(n.valor)}</div>
-          <div class="sub">vencimento em ${esc(n.venc)}</div>
+          <div style="font-size:28px;font-weight:700;margin:6px 0 2px${difNF!==0?';color:var(--danger-03)':''}">${BRL(n.valor)}</div>
+          <div class="sub">${difNF!==0
+            ? `${BRL(Math.abs(difNF))} ${difNF>0?'acima':'abaixo'} do aprovado (${BRL(vApo(p))}) · vencimento em ${esc(n.venc)}`
+            : `vencimento em ${esc(n.venc)}`}</div>
         </div>
         <div class="card pad" style="margin-top:16px">
           <span class="kicker">O que acontece depois</span>
           <ol class="lista-passos">
             <li>Aprovar envia o faturamento para Contas a Pagar com a nota anexada.</li>
             <li>Devolver reabre o período com a consultoria, sem cancelar o apontamento.</li>
-            <li>Carta de correção mantém a nota original e a consultoria anexa a carta.</li>
-            <li>Nova nota cancela a atual; a anterior fica no histórico.</li>
+            <li>Carta de correção mantém a nota original — não altera valor, quantidade nem data.</li>
+            <li>Nova nota cancela a atual e é a única forma de corrigir o valor.</li>
           </ol></div>
       </div>
     </div>`;
@@ -2251,11 +2276,13 @@ function dlgDevolverNF(){
       <div style="display:flex;flex-direction:column;gap:10px">
         <button class="opt" role="radio" aria-checked="true" onclick="pickDev(this,'carta')">
           <span class="radio"><i></i></span><span class="tx"><b>Emitir carta de correção</b>
-            <p>O valor está correto, mas há um dado a corrigir na nota. A nota original é mantida e a consultoria anexa a carta.</p>
+            <p>Para dados cadastrais — razão social, endereço, descrição do serviço. A carta não pode alterar
+               valor, quantidade de horas nem data de emissão.</p>
           </span></button>
         <button class="opt" role="radio" aria-checked="false" onclick="pickDev(this,'nf')">
           <span class="radio"><i></i></span><span class="tx"><b>Emitir nova nota fiscal</b>
-            <p>A nota precisa ser cancelada e reemitida. A nova nota substitui a atual; a anterior fica no histórico.</p>
+            <p>Para erro de valor ou de horas. A nota é cancelada e reemitida; a nova substitui a atual
+               e a anterior fica no histórico.</p>
           </span></button>
       </div>
       <label class="field" id="fDevNF"><textarea id="txDevNF"
@@ -2270,8 +2297,8 @@ function pickDev(btn,tipo){
   $$('.dialog .opt').forEach(o=>o.setAttribute('aria-checked','false'));
   btn.setAttribute('aria-checked','true');
   $('#txDevNF').placeholder = tipo==='carta'
-    ? 'O que precisa ser corrigido na nota — a consultoria anexa a carta com essa informação'
-    : 'Por que a nota precisa ser cancelada e reemitida';
+    ? 'Qual dado cadastral precisa ser corrigido — a consultoria anexa a carta com essa informação'
+    : 'Qual é o valor correto e de onde vem a diferença — a consultoria reemite a nota com essa informação';
 }
 function confirmarDevolverNF(){
   const tx=$('#txDevNF').value.trim();
@@ -2306,7 +2333,7 @@ function confirmarAprovarNF(){
   nav('fat'); toast('Faturamento aprovado · enviado para Contas a Pagar.',{kind:'ok'});
 }
 /* ============================================================
-   Tarefas da sessão
+   Enunciados das tarefas
    ============================================================ */
 const TAREFAS = [
   { id:'A1', fluxo:'Alocação', min:8, rota:'aloc',
@@ -2314,21 +2341,21 @@ const TAREFAS = [
     cenario:'A sua squad vai precisar de reforço a partir de 15 de setembro: um desenvolvedor front-end especialista e um analista de dados pleno, os dois por seis meses. Você ainda não sabe quem serão as pessoas — o RH e as consultorias resolvem isso depois. O front-end vai ser pago metade pelo centro de custo da sua área, o 20492 · Open Finance, e metade pelo 20488 · Dados & Analytics, que está bancando parte do projeto. Mostra para mim como você faria esse pedido.',
     partida:'Tela inicial de Alocações, visão Gestor, sem nada selecionado.' },
   { id:'A2', fluxo:'Alocação', min:6, rota:'aloc',
-    titulo:'A consultoria respondeu mais caro',
-    cenario:'Alguns dias se passaram. A consultoria respondeu ao seu pedido e o time financeiro te cutucou dizendo que o valor que voltou está acima do que você pediu. Você precisa resolver isso hoje, porque o time depende dessas pessoas em setembro. O que você faz?',
-    partida:'Lista de propostas, visão Gestor, com a proposta divergente aguardando decisão.' },
+    titulo:'A consultoria respondeu a sua solicitação',
+    cenario:'Alguns dias se passaram. A consultoria respondeu àquele mesmo pedido que você acabou de enviar — o desenvolvedor front-end especialista e o analista de dados pleno — e o time financeiro te cutucou: o valor que voltou está bem abaixo do que você pediu e eles querem entender por quê antes de seguir. Você precisa resolver isso hoje, porque o time depende dessas duas pessoas em setembro. O que você faz?',
+    partida:'Tela de Alocações, visão Gestor. A alocação AL-407 · Open Finance — a mesma que você acabou de solicitar — está com a proposta da consultoria aguardando a sua decisão.' },
   { id:'F1', fluxo:'Faturamento', min:8, rota:'fat',
     titulo:'Fechar as horas do mês',
     cenario:'Hoje é dia 14 de agosto. A consultoria já lançou as horas que a equipe dela trabalhou na sua squad, e o processo parou esperando você. Sem a sua resposta, ninguém emite nota e ninguém recebe. Mostra para mim o que você faria.',
     partida:'Lista de períodos de faturamento, visão Gestor, sem filtro aplicado.' },
   { id:'F2', fluxo:'Faturamento', min:6, rota:'fat',
-    titulo:'A nota fiscal veio com a data errada',
-    cenario:'Outro período, mais adiantado: a consultoria já emitiu a nota fiscal e mandou. O financeiro conferiu e te avisou que a data de emissão da nota não bate com o comprovante que veio junto — o resto está certo, valor e horas conferem. Resolve isso do seu lado.',
+    titulo:'A nota fiscal veio com o valor errado',
+    cenario:'Outro período, mais adiantado: a consultoria já emitiu a nota fiscal e mandou. O financeiro conferiu e te avisou que o valor da nota não bate com o faturamento que você aprovou — a nota veio mais alta. Resolve isso do seu lado.',
     partida:'Lista de períodos, visão Gestor. O período em Aprovação da NF está disponível na lista.' }
 ];
 const TAREFA = id => TAREFAS.find(t=>t.id===id);
 
-/* ponto de extensão: nada escuta por padrão */
+/* gancho de registro — opcional, definido fora deste arquivo */
 function concluir(id,detalhe){ if(typeof registrarConclusao==='function') registrarConclusao(id,detalhe); }
 
 /* volta os dados ao ponto de partida sem mexer no que é de sessão */
@@ -2345,7 +2372,7 @@ function irParaTarefa(id){
 </script>
 <script>
 /* ============================================================
-   Enunciado sempre à mão, para reler quantas vezes quiser.
+   Barra do enunciado — sempre à mão, para reler quantas vezes quiser
    ============================================================ */
 const seq = TAREFAS.map(t=>t.id);
 state.tarefa = (()=>{
